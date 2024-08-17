@@ -7,7 +7,7 @@ export class KaijuSkyScraperSnacker extends Kaiju{
         super(scene);
 
         this.title = "Sky Scraper Snacker";
-        this.power = 1000;
+        this.power = 200;
         this.size = 3;
         this.sprite = "kaiju_sea_skyscraper_snacker"
 

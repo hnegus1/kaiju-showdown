@@ -17,6 +17,7 @@ import { RecruitmentStation } from '../entities/RecruitmentStation';
 import { getRandomInt } from '../helpers/RandomHelper';
 import { RestartButton } from '../entities/Ui/RestartButton';
 import { InitPoolStateService, PoolStateService } from '../state/PoolState';
+import { LEVEL_SCALING } from '../constants/Scaling';
 
 export class Game extends Scene
 {
@@ -262,14 +263,15 @@ export class Game extends Scene
 
     async reset(){
         this.level++;
-        this.score.reset(120 * this.level)
+        const scaling = this.level >= LEVEL_SCALING.length ? LEVEL_SCALING[LEVEL_SCALING.length - 1] : LEVEL_SCALING[this.level] 
+        this.score.reset(scaling)
         this.postScoreEffects = []
         this.preScoreEffects = []
         this.handEffects = []
 
         this.setTurnScore(0);
         this.scoreVal = 0;
-        this.targetVal = 120 * this.level;
+        this.targetVal = (scaling);
         this.turnVal = STARTING_TURN;
         
         await sleep(400)
