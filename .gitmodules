@@ -1,3 +1,4 @@
 [submodule "phaser3-rex-notes"]
 	path = phaser3-rex-notes
 	url = https://github.com/hnegus1/phaser3-rex-notes
+    branch = dev

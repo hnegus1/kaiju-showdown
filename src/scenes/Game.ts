@@ -263,6 +263,9 @@ export class Game extends Scene
     async reset(){
         this.level++;
         this.score.reset(120 * this.level)
+        this.postScoreEffects = []
+        this.preScoreEffects = []
+        this.handEffects = []
 
         this.setTurnScore(0);
         this.scoreVal = 0;

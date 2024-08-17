@@ -25,9 +25,12 @@ export default defineConfig({
                 manualChunks: {
                     phaser: ['phaser']
                 }
-            }
+            },
+            
+            
         },
         minify: 'terser',
+        watch: false,
         terserOptions: {
             compress: {
                 passes: 2
