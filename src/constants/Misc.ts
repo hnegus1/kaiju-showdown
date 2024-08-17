@@ -1,0 +1,1 @@
+export const STARTING_TURN = 4;
