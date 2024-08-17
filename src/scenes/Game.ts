@@ -175,10 +175,12 @@ export class Game extends Scene
         await sleep(800);
         //check if won
         if(this.scoreVal >= this.targetVal){
+            this.sound.play("sound_drumroll")
             this.playerZoneContainer.visible = false;
             this.score.sizer.visible = false;
             await sleep(2000)
             this.kaijuCrushedIt = new YouWinMessage(this);
+            this.sound.play("sound_tadaa")
             await sleep(2000);
             this.kaijuCrushedIt.text.text = "Select a Kaiju to recruit"
             this.recruitmentsRemaining = 3;

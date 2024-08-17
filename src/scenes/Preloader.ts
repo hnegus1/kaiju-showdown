@@ -50,6 +50,9 @@ export class Preloader extends Scene
         this.load.image('kaiju_sea_pufferfish', '/kaijus/sea_pufferfish.png')
         this.load.image('kaiju_sea_oyster', '/kaijus/sea_oyster.png')
         this.load.image('kaiju_sea_baby', '/kaijus/sea_baby.png')
+
+        this.load.audio("sound_tadaa", '/sound/tada.mp3')
+        this.load.audio("sound_drumroll", '/sound/drumroll.mp3')
     }
 
     create ()
