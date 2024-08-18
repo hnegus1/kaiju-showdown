@@ -25,12 +25,12 @@ class PoolStateServiceClass{
         // },
         {
             size: 1,
-            title: "Li'l Baby Kaiju",
+            title: "Li'l Baby",
             invoke: (scene : Phaser.Scene) => new KaijuSeaBaby(scene) 
         },
         {
             size: 2,
-            title: "Sea Kaiju",
+            title: "Sea Monster",
             invoke: (scene : Phaser.Scene) => new KaijuSeaRegular(scene) 
         },
         {

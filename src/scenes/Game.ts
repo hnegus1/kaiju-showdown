@@ -210,7 +210,7 @@ export class Game extends Scene
             this.score.sizer.visible = false;
             await sleep(2000)
             this.sound.play("sound_sad_trombone")
-            this.kaijuCrushedIt = new YouWinMessage(this, "Kaiju Crushed!! :(");
+            this.kaijuCrushedIt = new YouWinMessage(this, "Kaiju Krushed!! :(");
             await sleep(2000);
             new RestartButton(this);            
             return;
