@@ -46,7 +46,7 @@ export class KaijuMinnow extends Kaiju{
             }
         }
         if(canPlay && zones[parentZone.zoneIndex + this.size].canPlayKaiju(this)){
-            zones[parentZone.zoneIndex + 2].playKaiju(new KaijuMinnow(this.scene));
+            zones[parentZone.zoneIndex + 1].playKaiju(new KaijuMinnow(this.scene));
             await this.flashScoreLabel('Spawning...')
         }else{
             await this.flashScoreLabel("Can't spawn!");
