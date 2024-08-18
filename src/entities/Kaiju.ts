@@ -11,6 +11,7 @@ import type Container from "phaser3-rex-plugins/templates/ui/container/Container
 import type { Zone } from "./Zone";
 import { sleep } from "../helpers/AsyncHelper";
 import { PoolStateService } from "../state/PoolState";
+import { COLOUR_WHITE } from "../constants/Colours";
 
 export default class Kaiju extends ContainerLite{
     title : string;
@@ -48,19 +49,24 @@ export default class Kaiju extends ContainerLite{
         this.width = cardWidth;
         this.height = CARD_HEIGHT; 
 
-        this.cardBack = this.scene.add.rectangle(0, 0, cardWidth, CARD_HEIGHT, 0xffffff, 1);
+        this.cardBack = this.scene.add.rectangle(0, 0, cardWidth, CARD_HEIGHT, COLOUR_WHITE, 1);
         this.cardBack.setStrokeStyle(4, 0x000000);
 
         this.image = this.scene.add.sprite(0, 0, this.sprite);
         
-        this.titleLabel = this.scene.add.text(0, ((CARD_HEIGHT / 2) * -1) + 30, this.title);
+        this.titleLabel = this.scene.add.text(0, ((CARD_HEIGHT / 2) * -1) + 50, this.title);
+        this.titleLabel.setFontFamily("ccmonstermash");
+        this.titleLabel.setFontSize(32);
+        this.titleLabel.setWordWrapWidth(cardWidth - 30)
+        this.titleLabel.setAlign("center");
         this.titleLabel.setColor("black");
         this.titleLabel.setOrigin(0.5, 0.5)
         
-        this.descriptionLabel = this.scene.add.text(0, (CARD_HEIGHT / 2) - 50, this.description ?? `Causes $${this.power} of property damage`)
+        this.descriptionLabel = this.scene.add.text(0, (CARD_HEIGHT / 2) - 60, this.description ?? `Causes $${this.power} of property damage`)
         this.descriptionLabel.setWordWrapWidth(cardWidth - 30)
         this.descriptionLabel.setOrigin(0.5, 0.5)
         this.descriptionLabel.setColor("black");
+        this.descriptionLabel.setFontFamily("deva-ideal");
         this.descriptionLabel.setAlign("center");
 
         // this.manaLabel = this.scene.add.text(0, (CARD_HEIGHT / 2) - 30, `MANA COST: ${this.mana}`)
@@ -118,6 +124,7 @@ export default class Kaiju extends ContainerLite{
     async flashScoreLabel(val : string, sleepy = 0, sound = "sound_money"){
         this.scoreLabel = this.scene.add.text(this.getCardWidth() / 2, ((CARD_HEIGHT / 2) * -1) - 20, val);
         this.scoreLabel.setFontSize(32);
+        this.scoreLabel.setFontFamily("ccmonstermash");
         this.scoreLabel.setColor("black");
         this.scoreLabel.setDepth(100);
         this.scoreLabel.setOrigin(0.5, 0.5);

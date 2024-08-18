@@ -22,6 +22,7 @@ export class ScoreTarget extends ContainerLite{
         this.text = this.scene.add.text(0, 0, `GOAL: $${target} in property damage`);
         this.text.depth = 5
         this.text.setOrigin(0);
+        this.text.setFontFamily("deva-ideal");
         this.text.setColor("black");
 
         this.label = scene.rexUI.add.label({

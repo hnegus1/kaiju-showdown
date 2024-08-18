@@ -7,6 +7,7 @@ export class YouWinMessage extends ContainerLite{
         super(scene, 1920 / 2, 1080 * 0.2)
         this.text = this.scene.add.text(0, 0, message)
         this.text.setColor("black");
+        this.text.setFontFamily("ccmonstermash");
         this.text.setOrigin(0.5);
         this.text.setFontSize(48);
 

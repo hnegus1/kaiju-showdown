@@ -21,6 +21,7 @@ export class RestartButton extends ContainerLite{
         const text = this.scene.add.text(0, 0, 'Try again!');
         text.setFontSize(48)
         text.depth = 5
+        text.setFontFamily("ccmonstermash");
         text.setOrigin(0.5);
         text.setColor("black");
 

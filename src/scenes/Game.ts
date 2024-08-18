@@ -226,6 +226,7 @@ export class Game extends Scene
         this.genericScoringLabel = this.add.text(1920 / 2, 1080 * 0.2, val);
         this.genericScoringLabel.setFontSize(32);
         this.genericScoringLabel.setColor("black");
+        this.genericScoringLabel.setFontFamily("ccmonstermash");
         this.genericScoringLabel.setDepth(100);
         this.genericScoringLabel.setOrigin(0.5, 0.5);
 
