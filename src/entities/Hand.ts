@@ -10,18 +10,10 @@ import Container from "phaser3-rex-plugins/templates/ui/container/Container";
 import type GridSizer from "phaser3-rex-plugins/templates/ui/gridsizer/GridSizer";
 import { getRandomInt } from "../helpers/RandomHelper";
 import { sleep } from "../helpers/AsyncHelper";
-import { KaijuOyster } from "./Kaijus/KaijuOyster";
-import { KaijuPufferFish } from "./Kaijus/KaijuPufferFish";
-import { KaijuMinnow } from "./Kaijus/KaijuMinnow";
 import { KaijuWallStreet } from "./Kaijus/KaijuWallStreetEater";
-import { KaijuBigBarracuda } from "./Kaijus/KaijuBigBarracuda";
 import { GetSceneAsGame } from "../helpers/SceneHelpers";
-import { KaijuIslandTurtle } from "./Kaijus/KaijuIslandTurtle";
-import { KaijuSkyScraperSnacker } from "./Kaijus/KaijuSkyScraperSnacker";
-import { KaijuDealCloser } from "./Kaijus/KaijuDealCloser";
-import { KaijuBerzerk } from "./Kaijus/KaijuBerzerk";
-import { KaijuSeaSerpent } from "./Kaijus/KaijuSeaSerpent";
 import { PoolStateService } from "../state/PoolState";
+import { SpawnSoundService } from "../state/SpawnSoundService";
 
 
 
@@ -67,7 +59,6 @@ export class Hand extends ScrollablePanel{
         
         this.getSizer().layout();
         this.layout();
-        this.drawForTurn();
 
     }
 
@@ -95,11 +86,12 @@ export class Hand extends ScrollablePanel{
             const selectedIndex = getRandomInt(toSelectFrom.length)
 
             const invoked = toSelectFrom[selectedIndex].invoke(this.scene);
-            // const invoked = new KaijuSeaSerpent(this.scene);
+            // const invoked = PoolStateService.RECRUITABLE_KAIJUS[5].invoke(this.scene);
             this.getSizer().add(invoked);
             this.getSizer().layout();
             this.layout();
-            await sleep(100);
+            SpawnSoundService.boop(this.scene, "sound_pop");
+            await sleep(200);
             sizeLimit -= invoked.size;
             
             sizeLeft = sizeLimit < 3 ? sizeLimit : 3

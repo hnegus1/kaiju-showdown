@@ -12,13 +12,14 @@ export class RestartButton extends ContainerLite{
     background : Rectangle
 
     constructor(scene : Phaser.Scene){
-        super(scene, 1920 / 2, 1080 * 0.45);
+        super(scene, 1920 / 2, 1080 * 0.5);
 
         const background = this.scene.add.rectangle(0, 0, 0, 0, COLOUR_WHITE);
         background.setStrokeStyle(3, COLOUR_BLACK);
         background.depth = 4
 
         const text = this.scene.add.text(0, 0, 'Try again!');
+        text.setFontSize(48)
         text.depth = 5
         text.setOrigin(0.5);
         text.setColor("black");

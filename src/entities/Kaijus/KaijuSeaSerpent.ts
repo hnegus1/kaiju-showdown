@@ -33,19 +33,23 @@ export class KaijuSeaSerpent extends Kaiju{
         
         const zones = GetZoneContainer(this.scene).childrenAsZones();
         let canPlay = true;
-        for (let i = parentZone.zoneIndex + this.size; i <= parentZone.zoneIndex + this.size + this.size; i++) {
+        for (let i = parentZone.zoneIndex + this.size; i < parentZone.zoneIndex + this.size + this.size; i++) {
+            console.info("eyee", i);
             if(i >= 4){
+                console.log(4444);
                 canPlay = false;
                 break;
             }
-
+            
             const zoneToQuestion = zones[i];
+            console.info("zone", zoneToQuestion);
+            console.info("kaiju", zoneToQuestion.kaiju);
             if(zoneToQuestion.kaiju){
+                console.log("uh oh")
                 canPlay = false;
                 break;
             }
         }
-
         if(canPlay && zones[parentZone.zoneIndex + this.size].canPlayKaiju(this)){
             zones[parentZone.zoneIndex + 2].playKaiju(new KaijuSeaSerpent(this.scene));
             await this.flashScoreLabel('Spawning...')

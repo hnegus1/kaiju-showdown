@@ -18,6 +18,7 @@ import { getRandomInt } from '../helpers/RandomHelper';
 import { RestartButton } from '../entities/Ui/RestartButton';
 import { InitPoolStateService, PoolStateService } from '../state/PoolState';
 import { LEVEL_SCALING } from '../constants/Scaling';
+import { InitSpawnSoundService } from '../state/SpawnSoundService';
 
 export class Game extends Scene
 {
@@ -46,6 +47,8 @@ export class Game extends Scene
 
     recruitment : RecruitmentStation;
 
+    bg : Phaser.GameObjects.Sprite;
+
     constructor ()
     {
         super('Game');
@@ -53,9 +56,13 @@ export class Game extends Scene
 
     create ()
     {
+        this.bg = this.add.sprite(1920 / 2, 1080 / 2, "BG");
+        this.bg.setOrigin(0.5);
+
+        InitPoolStateService();
         InitInputService();
         InitMiscStateService();
-        InitPoolStateService();
+        InitSpawnSoundService();
 
         this.level = 1;
 
@@ -83,12 +90,15 @@ export class Game extends Scene
 
         this.preScoreEffects = [];
         this.postScoreEffects = [];
+
+        this.hand.drawForTurn();
     }
 
     processKaijuDragEnd(kaiju : Kaiju){
         if(MiscStateService.hoveredZone?.canPlayKaiju(kaiju)){
             kaiju.orphan();
             MiscStateService.hoveredZone.playKaiju(kaiju);
+            this.sound.play("sound_pop", {rate: .7})
         }else if(kaiju.status === KaijuStatus.OnField){
             //add back to hand
             kaiju.orphan();
@@ -143,7 +153,7 @@ export class Game extends Scene
                 await sleep(400);
             }
         }
-        this.turnScore.visible = false;
+        
 
         
         this.incrementScore(this.turnScoreVal);
@@ -157,6 +167,8 @@ export class Game extends Scene
             await sleep(400);
         }
         if(this.postScoreEffects.length > 0) await sleep(800);
+
+        this.turnScore.visible = false;
 
         //kill the hand first
         for (const kaiju of this.hand.getKaijusInHand()) {
@@ -172,7 +184,6 @@ export class Game extends Scene
             kaiju?.destroy();
         }
 
-        await sleep(800);
         //check if won
         if(this.scoreVal >= this.targetVal){
             this.sound.play("sound_drumroll")
@@ -182,25 +193,28 @@ export class Game extends Scene
             this.kaijuCrushedIt = new YouWinMessage(this);
             this.sound.play("sound_tadaa")
             await sleep(2000);
-            this.kaijuCrushedIt.text.text = "Select a Kaiju to recruit"
+            this.kaijuCrushedIt.text.text = "Select a Kaiju to recruit (will add multiple copies)"
             this.recruitmentsRemaining = 3;
             await this.initRecruit();
             return;
         }
-
         //new turn
         this.decrementTurn();
-
+        
         //check if lost
         if(this.turnVal === 0){
+            this.sound.play("sound_drumroll")
             this.playerZoneContainer.visible = false;
             this.score.sizer.visible = false;
             await sleep(2000)
+            this.sound.play("sound_sad_trombone")
             this.kaijuCrushedIt = new YouWinMessage(this, "Kaiju Crushed!! :(");
             await sleep(2000);
             new RestartButton(this);            
             return;
         }
+        
+        await sleep(800);
 
         //draw cards
         await this.hand.drawForTurn();
@@ -239,6 +253,8 @@ export class Game extends Scene
     async initRecruit(){
         this.recruitmentsRemaining--;
         this.recruitment.removeAll(true);
+
+        
         
         if(this.recruitmentsRemaining === 1){
             await sleep(800);
@@ -283,6 +299,7 @@ export class Game extends Scene
         this.score.sizer.visible = true;
         await sleep(400)
         this.playerZoneContainer.visible = true;
+
 
         await this.hand.drawForTurn();
     }

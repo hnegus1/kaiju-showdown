@@ -21,6 +21,6 @@ export class KaijuWallStreet extends Kaiju{
     async tap(){
         const game = GetSceneAsGame(this.scene);
         game.preScoreEffects.push(new WallStreetEat(this.power))
-        await this.flashScoreLabel('Looking for Wall Streeters...')
+        await this.flashScoreLabel('Looking for Wall Streeters...', 2500, "sound_wall_street")
     }
 }

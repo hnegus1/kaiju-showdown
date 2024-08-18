@@ -115,7 +115,7 @@ export default class Kaiju extends ContainerLite{
         await this.flashScoreLabel(`+${this.power}`)
     }
 
-    async flashScoreLabel(val : string, sleepy = 0){
+    async flashScoreLabel(val : string, sleepy = 0, sound = "sound_money"){
         this.scoreLabel = this.scene.add.text(this.getCardWidth() / 2, ((CARD_HEIGHT / 2) * -1) - 20, val);
         this.scoreLabel.setFontSize(32);
         this.scoreLabel.setColor("black");
@@ -123,7 +123,8 @@ export default class Kaiju extends ContainerLite{
         this.scoreLabel.setOrigin(0.5, 0.5);
 
         this.pinLocal(this.scoreLabel);
-    
+        this.scene.sound.play(sound)
+
         const y = this.scoreLabel.y
         await new Promise<void>((resolve) => {
             this.scene.add.tween({
@@ -177,7 +178,8 @@ export default class Kaiju extends ContainerLite{
     }
 
     onDragStart(){
-        if(this.status === KaijuStatus.OnField){
+        if(this.status !== KaijuStatus.Recruiting){
+            this.scene.sound.play("sound_pop", {rate: 1.8})
         }
     }
     

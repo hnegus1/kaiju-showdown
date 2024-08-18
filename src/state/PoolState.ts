@@ -1,4 +1,4 @@
-import type Kaiju from "../entities/Kaiju";
+
 import { KaijuBerzerk } from "../entities/Kaijus/KaijuBerzerk";
 import { KaijuBigBarracuda } from "../entities/Kaijus/KaijuBigBarracuda";
 import { KaijuDealCloser } from "../entities/Kaijus/KaijuDealCloser";
@@ -14,7 +14,6 @@ import { KaijuSeaUrchin } from "../entities/Kaijus/KaijuSeaUrchin";
 import { KaijuSkyScraperSnacker } from "../entities/Kaijus/KaijuSkyScraperSnacker";
 import { KaijuWallStreet } from "../entities/Kaijus/KaijuWallStreetEater";
 import { KaijuKeyboardWarrior } from "../entities/Kaijus/KajuKeyboardWarrior";
-import type { Zone } from "../entities/Zone";
 import type { KaijuShell } from "../model/KaijuShell";
 
 

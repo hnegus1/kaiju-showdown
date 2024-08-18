@@ -22,7 +22,7 @@ export class Zone extends ContainerLite{
 
         this.zoneIndex = ind;
 
-        this.rect = scene.add.rectangle(0, 0, CARD_WIDTH, CARD_HEIGHT, 0x000000, 0)
+        this.rect = scene.add.rectangle(0, 0, CARD_WIDTH, CARD_HEIGHT, 0x000000, 0.3)
         this.rect.setStrokeStyle(4, 0x000000);
 
         this.pinLocal(this.rect);
