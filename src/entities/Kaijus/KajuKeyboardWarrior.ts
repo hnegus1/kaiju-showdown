@@ -13,7 +13,7 @@ export class KaijuKeyboardWarrior extends Kaiju{
         this.power = 0;
         this.size = 3;
         this.sprite = "kaiju_sea_keyboard_warrior"
-        this.description = 'Set accumulated score to zero. Kill all other Kaijus in play. Play your hand instead.';
+        this.description = 'Set accumulated property damage this turn to zero. Kill all other Kaijus in play. Play your hand instead.';
 
         this.create();
     }

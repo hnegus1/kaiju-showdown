@@ -11,7 +11,7 @@ export class KaijuOyster extends Kaiju{
         this.power = 5;
         this.size = 1;
         this.sprite = "kaiju_sea_oyster"
-        this.description = "1 in 2 chance to multiply accumulated score by 5";
+        this.description = "1 in 2 chance to multiply accumulated property damage this turn by 5";
 
         this.create();
     }

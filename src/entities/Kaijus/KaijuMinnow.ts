@@ -12,7 +12,7 @@ export class KaijuMinnow extends Kaiju{
         this.power = 50;
         this.size = 1;
         this.sprite = "kaiju_sea_minnow"
-        this.description = `Cause $${this.power} of property damage. Multiplied by the number of minnows in play.`;
+        this.description = `Cause $${this.power} of property damage. Multiplied by the number of Minnows in play.`;
 
         this.create();
     }

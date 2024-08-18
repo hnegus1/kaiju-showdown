@@ -10,7 +10,7 @@ export class KaijuDealCloser extends Kaiju{
         this.power = 2;
         this.size = 3;
         this.sprite = "kaiju_sea_deal_closer"
-        this.description = "Doubles your current total score";
+        this.description = "Doubles your current total property damage (excluding accumulated property damage this turn)";
 
         this.create();
     }

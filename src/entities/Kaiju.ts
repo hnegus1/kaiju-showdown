@@ -137,7 +137,7 @@ export default class Kaiju extends ContainerLite{
             this.scene.add.tween({
                 targets: [this.scoreLabel],
                 y: y - 100,
-                duration: sleepy === 0 ? 400 : sleepy,
+                duration: sleepy === 0 ? 800 : sleepy,
                 delay: 0,
                 opacity: 0,
                 ease: 'Linear',

@@ -158,8 +158,6 @@ export class Game extends Scene
         
 
         
-        this.incrementScore(this.turnScoreVal);
-        this.turnScoreVal = 0;
         
         await sleep(800);
 
@@ -170,6 +168,9 @@ export class Game extends Scene
         }
         if(this.postScoreEffects.length > 0) await sleep(800);
 
+        
+        this.incrementScore(this.turnScoreVal);
+        this.turnScoreVal = 0;
         this.turnScore.visible = false;
 
         //kill the hand first

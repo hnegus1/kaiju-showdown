@@ -11,7 +11,7 @@ export class KaijuBerzerk extends Kaiju{
         this.power = 0;
         this.size = 3;
         this.sprite = "kaiju_sea_berzerk"
-        this.description = '10x score at the end of scoring on your last turn';
+        this.description = '10x property damage at the end of scoring on your last turn';
 
         this.create();
     }

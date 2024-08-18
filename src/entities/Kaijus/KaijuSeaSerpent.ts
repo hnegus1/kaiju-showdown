@@ -13,7 +13,7 @@ export class KaijuSeaSerpent extends Kaiju{
         this.power = 50;
         this.size = 2;
         this.sprite = "kaiju_sea_sea_serpent"
-        this.description = `Causes ${this.power} property damage. Multiplied by the number of Kaijus in play.`;
+        this.description = `Causes $${this.power} property damage. Multiplied by the number of Kaijus in play.`;
 
         this.create();
     }
