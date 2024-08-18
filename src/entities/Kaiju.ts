@@ -64,6 +64,7 @@ export default class Kaiju extends ContainerLite{
         
         this.descriptionLabel = this.scene.add.text(0, (CARD_HEIGHT / 2) - 60, this.description ?? `Causes $${this.power} of property damage`)
         this.descriptionLabel.setWordWrapWidth(cardWidth - 30)
+        this.descriptionLabel.setFontSize(this.size === 1 ? 16 : 24);
         this.descriptionLabel.setOrigin(0.5, 0.5)
         this.descriptionLabel.setColor("black");
         this.descriptionLabel.setFontFamily("deva-ideal");
@@ -118,7 +119,7 @@ export default class Kaiju extends ContainerLite{
         
         const game = GetSceneAsGame(this.scene);
         game.setTurnScore(game.turnScoreVal + this.power);
-        await this.flashScoreLabel(`+${this.power}`)
+        await this.flashScoreLabel(`+$${this.power}`)
     }
 
     async flashScoreLabel(val : string, sleepy = 0, sound = "sound_money"){

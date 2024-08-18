@@ -22,6 +22,7 @@ export class CurrentScore extends ContainerLite{
         this.text = this.scene.add.text(0, 0, `CURRENT: $${startingValue}`);
         this.text.depth = 5
         this.text.setFontFamily("deva-ideal");
+        this.text.setFontSize(24);
         this.text.setOrigin(0);
         this.text.setColor("black");
 

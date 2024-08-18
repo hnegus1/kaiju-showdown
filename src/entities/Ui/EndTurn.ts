@@ -23,6 +23,7 @@ export class EndTurn extends ContainerLite{
         const text = this.scene.add.text(0, 0, 'Play Kaijus');
         text.depth = 5
         text.setFontFamily("ccmonstermash");
+        text.setFontSize(24);
         text.setOrigin(0.5);
         text.setColor("black");
 

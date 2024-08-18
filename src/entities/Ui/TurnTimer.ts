@@ -24,6 +24,7 @@ export class TurnTimer extends ContainerLite{
         this.text = this.scene.add.text(0, 0, `TURNS REMAINING: ${turns === 1 ? 'last turn!' : turns}`);
         this.text.depth = 5
         this.text.setOrigin(0);
+        this.text.setFontSize(24);
         this.text.setFontFamily("deva-ideal");
         this.text.setColor("black");
 

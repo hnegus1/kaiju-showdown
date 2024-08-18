@@ -239,7 +239,7 @@ export class Game extends Scene
             this.add.tween({
                 targets: [this.genericScoringLabel],
                 y: y - 100,
-                duration: 400,
+                duration: 700,
                 delay: 0,
                 opacity: 0,
                 ease: 'Linear',
