@@ -135,7 +135,7 @@ export class Game extends Scene
 
 
     async passTurn(){
-        //TODO lock input
+        InputService.lock();
         this.endTurnButton.visible = false;
 
         this.turnScore.visible = true;
@@ -186,7 +186,7 @@ export class Game extends Scene
             kaiju?.orphan();
             kaiju?.destroy();
         }
-
+        InputService.unlock();
         //check if won
         if(this.scoreVal >= this.targetVal){
             this.sound.play("sound_drumroll")

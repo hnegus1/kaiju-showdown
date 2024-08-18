@@ -176,7 +176,7 @@ export default class Kaiju extends ContainerLite{
 
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     onDrag(ev : any){
-        if(this.status !== KaijuStatus.Recruiting){
+        if(this.status !== KaijuStatus.Recruiting && !InputService.isLocked()){
             InputService.setDragging(true);
             MiscStateService.draggedKaiju = this;
             
@@ -186,12 +186,14 @@ export default class Kaiju extends ContainerLite{
     }
 
     onDragStart(){
-        if(this.status !== KaijuStatus.Recruiting){
+        if(this.status !== KaijuStatus.Recruiting && !InputService.isLocked()){
             this.scene.sound.play("sound_pop", {rate: 1.8})
         }
     }
     
-    onDragEnd(){       
-        GetSceneAsGame(this.scene).processKaijuDragEnd(this);
+    onDragEnd(){ 
+        if(this.status !== KaijuStatus.Recruiting && !InputService.isLocked()){   
+            GetSceneAsGame(this.scene).processKaijuDragEnd(this);
+        }
     }
 }
