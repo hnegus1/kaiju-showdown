@@ -58,6 +58,7 @@ export class Preloader extends Scene
 
         this.load.audio("sound_pop", '/sound/pop.flac')
         this.load.audio("sound_money", '/sound/money.mp3')
+        this.load.audio("sound_nuh_uh", '/sound/nuh_uh.mp3')
         this.load.audio("sound_wall_street", '/sound/wall_street.mp3')
         this.load.audio("sound_scream", '/sound/scream.mp3')
         this.load.audio("sound_roar", '/sound/roar.mp3')

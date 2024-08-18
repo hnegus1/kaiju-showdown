@@ -73,9 +73,29 @@ export class Zone extends ContainerLite{
     getAdjacentZones(){
         if(this.zoneIndex === 0) return [GetZoneContainer(this.scene).getChildren()[1] as Zone];
         if(this.zoneIndex === 4) return [GetZoneContainer(this.scene).getChildren()[3] as Zone];
-
+        
         const container = GetZoneContainer(this.scene).childrenAsZones();
         return [container[this.zoneIndex - 1] as Zone, container[this.zoneIndex + 1] as Zone];
+    }
+    
+    //only for size 1s
+    kaijusAreAdjacent(){
+        if(this.zoneIndex === 0){
+            return (GetZoneContainer(this.scene).getChildren()[1] as Zone).kaiju
+        }
+
+        const container = GetZoneContainer(this.scene).childrenAsZones();
+        for (let i = this.zoneIndex - 1; i >= 0; i--) {
+            if(container[i].kaiju && i + (container[i].kaiju as Kaiju).size >= this.zoneIndex){
+                console.log(`returning true!! - ${i} - ${(container[i].kaiju as Kaiju).size} - ${this.zoneIndex}`);
+                return true;
+            }    
+        }
+        
+        console.log(this.zoneIndex)
+        if(this.zoneIndex === 4) return false;
+
+        return (GetZoneContainer(this.scene).getChildren()[this.zoneIndex + 1] as Zone).kaiju
     }
 
     private setHovered(hovered : boolean){

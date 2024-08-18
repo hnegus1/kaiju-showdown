@@ -86,7 +86,7 @@ export class Hand extends ScrollablePanel{
             const selectedIndex = getRandomInt(toSelectFrom.length)
 
             const invoked = toSelectFrom[selectedIndex].invoke(this.scene);
-            // const invoked = PoolStateService.RECRUITABLE_KAIJUS[5].invoke(this.scene);
+            // const invoked = PoolStateService.RECRUITABLE_KAIJUS[2].invoke(this.scene);
             this.getSizer().add(invoked);
             this.getSizer().layout();
             this.layout();

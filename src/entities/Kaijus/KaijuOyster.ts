@@ -23,7 +23,7 @@ export class KaijuOyster extends Kaiju{
             game.setTurnScore(game.turnScoreVal * this.power);
             await this.flashScoreLabel(`Found a pearl! x${this.power}`)
         }else{
-            await this.flashScoreLabel('No pearl :(')
+            await this.flashScoreLabel('No pearl :(', 800, "sound_nuh_uh")
         }
     }
 }

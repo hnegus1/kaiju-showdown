@@ -20,16 +20,15 @@ export class KaijuPufferFish extends Kaiju{
 
     async tap(){
         if(this.status === KaijuStatus.InHand){
-            await this.flashScoreLabel('Next to a Kaiju! :(')
+            await this.flashScoreLabel('Next to a Kaiju! :(', 1000, "sound_nuh_uh")
             return;
         }
 
         const game = GetSceneAsGame(this.scene);
         const zone = this.getParent() as Zone;
-        const adjacentZones = zone.getAdjacentZones()
         
-        if(adjacentZones.some(x => x.kaiju)){
-            await this.flashScoreLabel('Next to a Kaiju! :(')
+        if(zone.kaijusAreAdjacent()){
+            await this.flashScoreLabel('Next to a Kaiju! :(', 1000, "sound_nuh_uh")
         }else{
             game.setTurnScore(game.turnScoreVal + this.power);
             await this.flashScoreLabel(`+${this.power}`)

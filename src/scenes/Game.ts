@@ -104,6 +104,8 @@ export class Game extends Scene
             kaiju.orphan();
             kaiju.status = KaijuStatus.InHand;
             this.hand.getSizer().add(kaiju, {expand: true});
+        }else if(kaiju.status !== KaijuStatus.Recruiting){
+            this.sound.play("sound_nuh_uh")
         }
 
         this.hand.getSizer().layout();
@@ -271,12 +273,18 @@ export class Game extends Scene
             const size2Index = getRandomInt(PoolStateService.RECRUITABLE_KAIJUS_SIZE_2().length)
             const size3Index = getRandomInt(PoolStateService.RECRUITABLE_KAIJUS_SIZE_3().length)
     
-            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_1().length > 1)
+            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_1().length > 0)
                 this.recruitment.invokeShell(PoolStateService.RECRUITABLE_KAIJUS_SIZE_1()[size1Index])
-            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_2().length > 1)
+            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_2().length > 0)
                 this.recruitment.invokeShell(PoolStateService.RECRUITABLE_KAIJUS_SIZE_2()[size2Index])
-            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_3().length > 1)
+            if(PoolStateService.RECRUITABLE_KAIJUS_SIZE_3().length > 0)
                 this.recruitment.invokeShell(PoolStateService.RECRUITABLE_KAIJUS_SIZE_3()[size3Index])
+
+            if(PoolStateService.RECRUITABLE_KAIJUS.length === 0){
+                this.kaijuCrushedIt.text.text = `No more cards left! See how far you can go! (Level ${this.level})`
+                await sleep(3000);
+                await this.reset();
+            }
         }
     }
 

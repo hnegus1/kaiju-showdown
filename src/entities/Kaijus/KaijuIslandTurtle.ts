@@ -20,7 +20,7 @@ export class KaijuIslandTurtle extends Kaiju{
         const game = GetSceneAsGame(this.scene);
         
         if(game.handEffects.length > 0){
-            await this.flashScoreLabel("it doesn't stack, you shouldn't play two of these, play something else instead", 3000)
+            await this.flashScoreLabel("it doesn't stack, you shouldn't play two of these, play something else instead", 3000, "sound_nuh_uh")
         }else{
             game.handEffects.push(new TurtleHandEffect(0));
             await this.flashScoreLabel("picking the FINEST cards for you :)", 800)
